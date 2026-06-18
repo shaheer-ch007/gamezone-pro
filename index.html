@@ -7,78 +7,60 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0a0e1a;color:#fff;font-family:'Segoe UI',Arial,sans-serif}
-
-/* NAV */
 nav{background:rgba(10,14,26,0.97);padding:15px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;border-bottom:2px solid #ff6b00}
-.logo{font-size:24px;font-weight:900;color:#ff6b00;text-decoration:none}
+.logo{font-size:24px;font-weight:900;color:#ff6b00}
 .nav-links a{color:#fff;text-decoration:none;margin:0 15px;font-size:15px;font-weight:500;transition:color 0.2s}
 .nav-links a:hover{color:#ff6b00}
 .coins{color:#ff6b00;font-weight:bold;background:#1a1f35;padding:8px 16px;border-radius:20px;border:1px solid #ff6b00}
-
-/* HERO */
-.hero{background:linear-gradient(135deg,#0a0e1a 0%,#1a1f35 50%,#0d1526 100%);padding:80px 40px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,107,0,0.18) 0%,transparent 70%);pointer-events:none}
-.hero-img{width:100%;max-height:350px;object-fit:cover;border-radius:16px;margin-bottom:30px;border:2px solid #ff6b00;box-shadow:0 0 40px rgba(255,107,0,0.3)}
-.hero h1{font-size:52px;font-weight:900;margin-bottom:18px;position:relative}
+.hero{background:linear-gradient(135deg,#0a0e1a,#1a1f35,#0d1526);padding:0 0 60px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,107,0,0.15) 0%,transparent 70%);pointer-events:none}
+.hero-banner{width:100%;height:400px;object-fit:cover;display:block}
+.hero-content{padding:40px 40px 0;position:relative}
+.hero h1{font-size:52px;font-weight:900;margin-bottom:18px}
 .hero h1 span{color:#ff6b00;text-shadow:0 0 30px rgba(255,107,0,0.5)}
-.hero p{font-size:18px;color:#aaa;margin-bottom:35px;position:relative}
+.hero p{font-size:18px;color:#aaa;margin-bottom:35px}
 .hero-btns{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
 .btn{background:linear-gradient(135deg,#ff6b00,#ff8c00);color:#fff;padding:15px 40px;border:none;border-radius:30px;font-size:17px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.3s;box-shadow:0 5px 25px rgba(255,107,0,0.4)}
 .btn:hover{transform:translateY(-3px);box-shadow:0 8px 35px rgba(255,107,0,0.6)}
 .btn-outline{background:transparent;border:2px solid #ff6b00;color:#ff6b00;padding:13px 35px;border-radius:30px;font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.3s}
 .btn-outline:hover{background:#ff6b00;color:#fff}
-
-/* STATS */
 .stats{display:flex;justify-content:center;gap:60px;padding:25px 40px;background:#0d1120;border-bottom:1px solid #1a1f35;flex-wrap:wrap}
 .stat{text-align:center}
 .stat-num{font-size:28px;font-weight:900;color:#ff6b00}
 .stat-label{font-size:12px;color:#888;margin-top:4px}
-
-/* AD */
 .ad-banner{background:#111827;border:2px dashed #ff6b00;margin:20px 40px;padding:18px;text-align:center;color:#666;border-radius:8px;font-size:13px}
-
-/* CATEGORIES */
 .section-title{font-size:22px;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:10px}
 .categories{padding:25px 40px}
 .cat-grid{display:flex;gap:12px;flex-wrap:wrap}
 .cat-btn{background:#1a1f35;color:#fff;padding:11px 25px;border-radius:25px;border:2px solid #2a2f45;cursor:pointer;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.3s}
 .cat-btn:hover,.cat-btn.active{background:#ff6b00;border-color:#ff6b00;color:#fff;transform:translateY(-2px)}
-
-/* GAMES */
 .games-section{display:flex;padding:20px 40px;gap:25px}
 .games-main{flex:1}
 .games-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .game-card{background:#1a1f35;border-radius:16px;overflow:hidden;cursor:pointer;transition:all 0.3s;border:2px solid transparent}
 .game-card:hover{transform:translateY(-8px);border-color:#ff6b00;box-shadow:0 15px 40px rgba(255,107,0,0.3)}
-.game-thumb{position:relative;overflow:hidden;height:170px;background:#0d1526}
+.game-thumb{position:relative;overflow:hidden;height:170px;background:#0d1526;display:flex;align-items:center;justify-content:center}
 .game-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s;display:block}
 .game-card:hover .game-thumb img{transform:scale(1.08)}
 .game-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;font-size:50px}
 .game-card:hover .game-overlay{opacity:1}
-.no-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:50px;background:linear-gradient(135deg,#1a1f35,#0d1526)}
+.thumb-fallback{font-size:60px;display:none}
 .game-card-info{padding:14px}
 .cat-tag{color:#ff6b00;font-size:11px;font-weight:700;letter-spacing:1px}
 .game-card-info h3{font-size:15px;margin:5px 0 10px;font-weight:700}
 .play-btn{background:linear-gradient(135deg,#ff6b00,#ff8c00);color:#fff;border:none;padding:9px 18px;border-radius:20px;cursor:pointer;width:100%;font-size:14px;font-weight:600;transition:all 0.3s}
-.play-btn:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(255,107,0,0.4)}
-.no-games{text-align:center;padding:40px;color:#666;font-size:16px;grid-column:1/-1}
-
-/* SIDEBAR */
+.play-btn:hover{transform:translateY(-2px)}
 .sidebar{width:300px}
 .ad-space{background:#111827;border:2px dashed #ff6b00;border-radius:12px;padding:20px;text-align:center;color:#555;margin-bottom:20px;height:270px;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:13px}
-
-/* GAME PAGE */
 .game-page{display:none;padding:20px 40px}
 .game-layout{display:flex;gap:20px;align-items:flex-start}
 .game-frame{flex:1}
 .game-frame h2{margin-bottom:15px;font-size:24px;font-weight:800}
 .game-iframe-wrap{position:relative}
 .game-iframe-wrap iframe{width:100%;height:520px;border-radius:16px;border:3px solid #ff6b00;box-shadow:0 0 40px rgba(255,107,0,0.3);display:block}
-.back-btn{position:absolute;top:12px;left:12px;z-index:10;background:rgba(255,107,0,0.92);color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:700;font-size:13px;transition:all 0.3s}
-.back-btn:hover{background:#ff6b00;transform:scale(1.05)}
+.back-btn{position:absolute;top:12px;left:12px;z-index:10;background:rgba(255,107,0,0.92);color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:700;font-size:13px}
+.back-btn:hover{background:#ff6b00}
 .game-sidebar{width:300px}
-
-/* SPIN */
 .spin-page{display:none;padding:40px;text-align:center}
 .spin-page h1{font-size:40px;font-weight:900;margin-bottom:10px}
 .spin-page h1 span{color:#ff6b00}
@@ -89,8 +71,6 @@ canvas#spinWheel{border-radius:50%;border:5px solid #ff6b00;margin:20px 0;box-sh
 .spin-result{background:#1a1f35;border-radius:16px;padding:30px;margin:20px 0;display:none;border:2px solid #ff6b00}
 .coin-circle{background:linear-gradient(135deg,#ff6b00,#ff8c00);width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;margin:0 auto 15px;box-shadow:0 0 30px rgba(255,107,0,0.5)}
 .spins-left{color:#ff6b00;font-size:14px;margin:10px 0;font-weight:600}
-
-/* POPUP */
 .popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;justify-content:center;align-items:center}
 .popup-overlay.active{display:flex}
 .popup{background:linear-gradient(135deg,#1a1f35,#0d1526);border-radius:20px;padding:35px;max-width:620px;width:93%;position:relative;border:2px solid #ff6b00;box-shadow:0 0 60px rgba(255,107,0,0.3)}
@@ -98,14 +78,12 @@ canvas#spinWheel{border-radius:50%;border:5px solid #ff6b00;margin:20px 0;box-sh
 .popup h2 span{color:#ff6b00}
 .close-btn{position:absolute;top:12px;right:12px;background:#1a1f35;border:1px solid #333;color:#fff;width:30px;height:30px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .reward-days{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
-.day-card{background:#0a0e1a;border-radius:12px;padding:12px 8px;text-align:center;min-width:68px;border:2px solid #2a2f45;transition:all 0.3s}
+.day-card{background:#0a0e1a;border-radius:12px;padding:12px 8px;text-align:center;min-width:68px;border:2px solid #2a2f45}
 .day-card.active{border-color:#ff6b00;background:rgba(255,107,0,0.1);box-shadow:0 0 15px rgba(255,107,0,0.3)}
 .day-card .day-num{color:#888;font-size:10px;font-weight:600}
 .day-card .day-reward{font-size:20px;margin:5px 0}
 .day-card .day-coins{color:#ff6b00;font-weight:700;font-size:12px}
 .popup-ad{background:#0a0e1a;border:2px dashed #ff6b00;padding:18px;text-align:center;color:#555;border-radius:10px;margin:15px 0;font-size:13px}
-
-/* FOOTER */
 footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px solid #1a1f35}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:35px}
 .footer-col h3{color:#ff6b00;margin-bottom:15px;font-size:17px;font-weight:800}
@@ -113,26 +91,12 @@ footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px 
 .footer-col a{color:#888;text-decoration:none;display:block;margin-bottom:9px;font-size:14px;transition:color 0.2s}
 .footer-col a:hover{color:#ff6b00}
 .footer-bottom{text-align:center;color:#444;border-top:1px solid #1a1f35;padding-top:22px;font-size:13px}
-
-@media(max-width:768px){
-  nav{padding:12px 15px}
-  .hero{padding:50px 20px}
-  .hero h1{font-size:30px}
-  .games-section,.game-layout{flex-direction:column}
-  .sidebar,.game-sidebar{width:100%}
-  .games-grid{grid-template-columns:repeat(2,1fr);gap:12px}
-  .footer-grid{grid-template-columns:1fr}
-  .stats{gap:25px}
-  .ad-banner{margin:15px 20px}
-  .categories{padding:20px}
-  .games-section{padding:15px 20px}
-  .game-page{padding:15px}
-}
+@media(max-width:768px){nav{padding:12px 15px}.hero h1{font-size:30px}.games-section,.game-layout{flex-direction:column}.sidebar,.game-sidebar{width:100%}.games-grid{grid-template-columns:repeat(2,1fr);gap:12px}.footer-grid{grid-template-columns:1fr}.stats{gap:25px}.ad-banner{margin:15px 20px}.categories,.games-section,.game-page,.spin-page{padding:15px 20px}}
 </style>
 </head>
 <body>
 
-<!-- DAILY POPUP -->
+<!-- POPUP -->
 <div class="popup-overlay active" id="dailyPopup">
   <div class="popup">
     <button class="close-btn" onclick="document.getElementById('dailyPopup').classList.remove('active')">✕</button>
@@ -164,24 +128,20 @@ footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px 
   <div class="coins">🪙 <span id="coinCount">150</span> Coins</div>
 </nav>
 
-<!-- HOME PAGE -->
+<!-- HOME -->
 <div id="homePage">
-
-  <!-- HERO WITH IMAGE -->
   <div class="hero">
-    <img class="hero-img" 
-      src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80" 
-      alt="Gaming" 
-      onerror="this.style.display='none'">
-    <h1>Play Free Games,<br><span>No Download Needed</span></h1>
-    <p>1000+ Free Browser Games — Play Instantly!</p>
-    <div class="hero-btns">
-      <a href="#" class="btn" onclick="filterGames('ALL');document.getElementById('gamesGrid').scrollIntoView({behavior:'smooth'})">🎮 Play Now</a>
-      <a href="#" class="btn-outline" onclick="showPage('spin')">🎰 Spin & Win</a>
+    <img class="hero-banner" src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=1400&q=80" alt="Gaming Banner" onerror="this.style.display='none'">
+    <div class="hero-content">
+      <h1>Play Free Games,<br><span>No Download Needed</span></h1>
+      <p>1000+ Free Browser Games — Play Instantly!</p>
+      <div class="hero-btns">
+        <a href="#" class="btn" onclick="document.getElementById('gamesGrid').scrollIntoView({behavior:'smooth'})">🎮 Play Now</a>
+        <a href="#" class="btn-outline" onclick="showPage('spin')">🎰 Spin & Win</a>
+      </div>
     </div>
   </div>
 
-  <!-- STATS -->
   <div class="stats">
     <div class="stat"><div class="stat-num">1000+</div><div class="stat-label">Free Games</div></div>
     <div class="stat"><div class="stat-num">50K+</div><div class="stat-label">Players</div></div>
@@ -191,25 +151,23 @@ footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px 
 
   <div class="ad-banner">📢 Advertisement Banner 728x90</div>
 
-  <!-- CATEGORIES -->
   <div class="categories">
     <div class="section-title">🎯 Game Categories</div>
-    <div class="cat-grid">
-      <a href="#" class="cat-btn active" onclick="filterGames('ALL')">🎮 All Games</a>
-      <a href="#" class="cat-btn" onclick="filterGames('ACTION')">🔫 Action</a>
-      <a href="#" class="cat-btn" onclick="filterGames('RACING')">🏎️ Racing</a>
-      <a href="#" class="cat-btn" onclick="filterGames('PUZZLE')">🧩 Puzzle</a>
-      <a href="#" class="cat-btn" onclick="filterGames('SPORTS')">⚽ Sports</a>
-      <a href="#" class="cat-btn" onclick="filterGames('ADVENTURE')">🗺️ Adventure</a>
+    <div class="cat-grid" id="catGrid">
+      <a href="#" class="cat-btn active" onclick="filterGames('ALL',this)">🎮 All Games</a>
+      <a href="#" class="cat-btn" onclick="filterGames('ACTION',this)">🔫 Action</a>
+      <a href="#" class="cat-btn" onclick="filterGames('RACING',this)">🏎️ Racing</a>
+      <a href="#" class="cat-btn" onclick="filterGames('PUZZLE',this)">🧩 Puzzle</a>
+      <a href="#" class="cat-btn" onclick="filterGames('SPORTS',this)">⚽ Sports</a>
+      <a href="#" class="cat-btn" onclick="filterGames('ADVENTURE',this)">🗺️ Adventure</a>
     </div>
   </div>
 
-  <!-- GAMES + SIDEBAR -->
   <div class="games-section">
     <div class="games-main">
       <div class="section-title">🔥 Featured Games</div>
       <div class="games-grid" id="gamesGrid"></div>
-      <div id="noGames" style="display:none;text-align:center;padding:40px;color:#666">No games found in this category.</div>
+      <p id="noGames" style="display:none;text-align:center;padding:40px;color:#666;font-size:16px">No games in this category yet.</p>
       <div class="ad-banner" style="margin:20px 0">📢 Advertisement Banner 728x90</div>
     </div>
     <div class="sidebar">
@@ -232,10 +190,10 @@ footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px 
     <div class="game-frame">
       <h2 id="gameTitle">🎮 Loading...</h2>
       <div class="game-iframe-wrap">
-        <button class="back-btn" onclick="showPage('home')">⬅ Back to Games</button>
+        <button class="back-btn" onclick="showPage('home')">⬅ Back</button>
         <iframe id="gameIframe" src="" allowfullscreen
-          sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-orientation-lock"
-        ></iframe>
+          sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-orientation-lock allow-popups">
+        </iframe>
       </div>
       <div class="ad-banner" style="margin-top:15px">📢 Advertisement Banner 728x90</div>
       <div class="section-title" style="margin-top:25px">🎮 Related Games</div>
@@ -258,7 +216,7 @@ footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px 
     </div>
     <canvas id="spinWheel" width="300" height="300" onclick="doSpin()"></canvas>
     <div class="spins-left">🎯 3 Free Spins Remaining Today</div>
-    <button class="spin-btn" onclick="doSpin()">🎰 Watch Ad to Spin</button>
+    <button class="spin-btn" onclick="doSpin()">🎰 Spin Now!</button>
     <div class="spin-result" id="spinResult">
       <h2 style="font-size:28px;margin-bottom:15px">🎉 YOU WON!</h2>
       <div class="coin-circle" id="coinAmount">50 🪙</div>
@@ -276,7 +234,7 @@ footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px 
   <div class="footer-grid">
     <div class="footer-col">
       <h3>⚡ GameZone Pro</h3>
-      <p>Your ultimate destination for free online games. Play 1000+ games instantly in your browser. No download needed!</p>
+      <p>Your ultimate destination for free online games. Play 1000+ games instantly. No download needed!</p>
     </div>
     <div class="footer-col">
       <h3>Quick Links</h3>
@@ -291,41 +249,41 @@ footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px 
       <a href="mailto:support@gamezonepro.com">📧 support@gamezonepro.com</a>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 GameZone Pro. All rights reserved. | Made with ❤️ for Gamers</div>
+  <div class="footer-bottom">© 2026 GameZone Pro. All rights reserved.</div>
 </footer>
 
 <script>
 const BASE = 'https://shaheer-ch007.github.io/gamezone-pro/';
 const GD = 'https://html5.gamedistribution.com/';
 
+// YOUR REAL GAME IDs FROM GAMEDISTRIBUTION
 const games = [
-  { title:'Moto X3M', cat:'RACING', emoji:'🏍️', id:'5b0abd4c0faa4f5eb190a9a16d5a1b4c' },
-  { title:'Real GT Racing', cat:'RACING', emoji:'🏎️', id:'cf1e51dd543f417296a4cd4369784c63' },
-  { title:'Neon Rider', cat:'RACING', emoji:'🚀', id:'b70681ed5c0749e3bc79d3afb72b2907' },
-  { title:'Road Rush Cars', cat:'RACING', emoji:'🚗', id:'06ca1636c9e240f7a0f48b5d4d9d8993' },
-  { title:'Archers Random', cat:'ACTION', emoji:'🏹', id:'f4055ea8c0794a50badf82d7ce837eaa' },
-  { title:'Stack Ball', cat:'ACTION', emoji:'🎯', id:'9b2dd04813c74d3eba97ed601f0a7a2c' },
-  { title:'Knife Hit', cat:'ACTION', emoji:'🔪', id:'4dbe5b1b01954f3682e0440966b09b52' },
-  { title:'Stickman Hook', cat:'ACTION', emoji:'🕸️', id:'6728a2e13c2147d79e1930f0b9b8c261' },
-  { title:'Color Nonogram', cat:'PUZZLE', emoji:'🧩', id:'f423d4d8bc40433484787d614333399a' },
-  { title:'One More Pass', cat:'SPORTS', emoji:'⚽', id:'fc224956ee8d4720b4ab3dfdd01f56bf' },
-  { title:'Penalty Shooters', cat:'SPORTS', emoji:'🥅', id:'rvvASMiM' },
-  { title:'Adventure Quest', cat:'ADVENTURE', emoji:'🗺️', id:'f4055ea8c0794a50badf82d7ce837eaa' }
+  { title:'Speed Moto Racing', cat:'RACING', emoji:'🏍️', id:'e4af90c070cf499da371b44232a6aaca' },
+  { title:'Car Race 3D', cat:'RACING', emoji:'🏎️', id:'5d8d11e9919245939a57378a02b8fc8b' },
+  { title:'Stunt Bike', cat:'RACING', emoji:'🚀', id:'90fd8a77182b49adb43b76cf582b9c3e' },
+  { title:'City Rush Driver', cat:'RACING', emoji:'🚗', id:'07393e2820d1486ca209959528869a5f' },
+  { title:'Action Hero', cat:'ACTION', emoji:'🔫', id:'2fb1dc3ebec147eeb9d7875354afcc20' },
+  { title:'Fighter Arena', cat:'ACTION', emoji:'🥊', id:'567ad47ea5d04edaaa29a80cd9f9d1a3' },
+  { title:'Ninja Run', cat:'ACTION', emoji:'🥷', id:'9ffaf2fb134844958788642d2f76c6cd' },
+  { title:'Battle Legends', cat:'ACTION', emoji:'⚔️', id:'c6d324c4729f48ef9a3cd8882bdf078e' },
+  { title:'Brain Puzzle', cat:'PUZZLE', emoji:'🧩', id:'4254dba037de4b798541d2c97eae5016' },
+  { title:'Match Master', cat:'PUZZLE', emoji:'🎯', id:'f3ee6674b4ea4579aeefd54d7bf388f0' },
+  { title:'Soccer Stars', cat:'SPORTS', emoji:'⚽', id:'f6acd919192c441c9aca2d20a18e04c6' },
+  { title:'Basketball Pro', cat:'SPORTS', emoji:'🏀', id:'ad37a85f16e246fabdc818f375a5eb45' },
+  { title:'Adventure Quest', cat:'ADVENTURE', emoji:'🗺️', id:'f85eee6b515c4aecb0ef6c6563d05e39' },
+  { title:'Jungle Explorer', cat:'ADVENTURE', emoji:'🌴', id:'4aefd2cd9aba4cae8c1e839dedfccadd' }
 ];
-
-let currentFilter = 'ALL';
 
 function getThumb(id) {
   return `https://img.gamedistribution.com/${id}-512x512.jpeg`;
 }
 
 function makeCard(g, i) {
-  const thumb = getThumb(g.id);
   return `<div class="game-card" onclick="playGame(${i})">
     <div class="game-thumb">
-      <img src="${thumb}" alt="${g.title}" loading="lazy"
+      <img src="${getThumb(g.id)}" alt="${g.title}" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="no-img" style="display:none">${g.emoji}</div>
+      <div class="thumb-fallback" style="font-size:60px;display:none;width:100%;height:100%;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1f35,#0d1526)">${g.emoji}</div>
       <div class="game-overlay">▶️</div>
     </div>
     <div class="game-card-info">
@@ -336,11 +294,10 @@ function makeCard(g, i) {
   </div>`;
 }
 
-function filterGames(cat) {
-  currentFilter = cat;
+function filterGames(cat, btn) {
   // Update active button
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-  event && event.target && event.target.classList.add('active');
+  if(btn) btn.classList.add('active');
   
   const filtered = cat === 'ALL' ? games : games.filter(g => g.cat === cat);
   const grid = document.getElementById('gamesGrid');
@@ -351,20 +308,16 @@ function filterGames(cat) {
     noGames.style.display = 'block';
   } else {
     noGames.style.display = 'none';
-    grid.innerHTML = filtered.map((g) => makeCard(g, games.indexOf(g))).join('');
+    grid.innerHTML = filtered.map(g => makeCard(g, games.indexOf(g))).join('');
   }
-  
-  grid.scrollIntoView({behavior:'smooth'});
 }
 
 function playGame(index) {
   const g = games[index];
   document.getElementById('gameTitle').textContent = g.emoji + ' ' + g.title;
   document.getElementById('gameIframe').src = GD + g.id + '/?gd_sdk_referrer_url=' + BASE;
-  
   const others = games.filter((_,i) => i !== index).slice(0,3);
   document.getElementById('relatedGames').innerHTML = others.map(og => makeCard(og, games.indexOf(og))).join('');
-  
   showPage('game');
 }
 
@@ -376,69 +329,59 @@ function showPage(p) {
   window.scrollTo(0,0);
 }
 
-// SPIN WHEEL
-const prizes = ['10','25','50','100','200','500','1000🏆','Try Again'];
-const colors = ['#ff6b00','#1a1f35','#e55a00','#242a45','#ff8c00','#0d1526','#ffd700','#2a1f35'];
-let spinning = false, angle = 0, coins = 150;
+// SPIN
+const prizes=['10','25','50','100','200','500','1000🏆','Try Again'];
+const colors=['#ff6b00','#1a1f35','#e55a00','#242a45','#ff8c00','#0d1526','#ffd700','#2a1f35'];
+let spinning=false, angle=0, coins=150;
 
-function drawWheel(a=0) {
-  const cv = document.getElementById('spinWheel');
-  if(!cv) return;
-  const ctx = cv.getContext('2d'), cx=150, cy=150, r=138, sl=(2*Math.PI)/8;
+function drawWheel(a=0){
+  const cv=document.getElementById('spinWheel');
+  if(!cv)return;
+  const ctx=cv.getContext('2d'),cx=150,cy=150,r=138,sl=(2*Math.PI)/8;
   ctx.clearRect(0,0,300,300);
-  prizes.forEach((p,i) => {
-    const s = a + i*sl;
-    ctx.beginPath(); ctx.moveTo(cx,cy);
-    ctx.arc(cx,cy,r,s,s+sl);
-    ctx.fillStyle = colors[i]; ctx.fill();
-    ctx.strokeStyle = '#ff6b00'; ctx.lineWidth = 2; ctx.stroke();
-    ctx.save(); ctx.translate(cx,cy); ctx.rotate(s+sl/2);
-    ctx.textAlign = 'right'; ctx.fillStyle = '#fff';
-    ctx.font = 'bold 12px Arial'; ctx.fillText(p, r-8, 5);
+  prizes.forEach((p,i)=>{
+    const s=a+i*sl;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,s,s+sl);
+    ctx.fillStyle=colors[i];ctx.fill();
+    ctx.strokeStyle='#ff6b00';ctx.lineWidth=2;ctx.stroke();
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(s+sl/2);
+    ctx.textAlign='right';ctx.fillStyle='#fff';
+    ctx.font='bold 12px Arial';ctx.fillText(p,r-8,5);
     ctx.restore();
   });
-  // Center
-  ctx.beginPath(); ctx.arc(cx,cy,22,0,2*Math.PI);
-  ctx.fillStyle = '#ff6b00'; ctx.fill();
-  ctx.fillStyle = '#fff'; ctx.font = 'bold 12px Arial';
-  ctx.textAlign = 'center'; ctx.fillText('GO',cx,cy+4);
-  // Arrow
-  ctx.beginPath(); ctx.moveTo(cx,cy-r-5);
-  ctx.lineTo(cx-10,cy-r+15); ctx.lineTo(cx+10,cy-r+15);
-  ctx.closePath(); ctx.fillStyle = '#fff'; ctx.fill();
+  ctx.beginPath();ctx.arc(cx,cy,22,0,2*Math.PI);
+  ctx.fillStyle='#ff6b00';ctx.fill();
+  ctx.fillStyle='#fff';ctx.font='bold 12px Arial';
+  ctx.textAlign='center';ctx.fillText('GO',cx,cy+4);
+  ctx.beginPath();ctx.moveTo(cx,cy-r-5);
+  ctx.lineTo(cx-10,cy-r+15);ctx.lineTo(cx+10,cy-r+15);
+  ctx.closePath();ctx.fillStyle='#fff';ctx.fill();
 }
 
-function doSpin() {
-  if(spinning) return;
-  spinning = true;
-  const total = (Math.random()*360+720)*(Math.PI/180);
-  const dur = 3500, start = performance.now(), sa = angle;
-  (function anim(now) {
-    const el=now-start, pr=Math.min(el/dur,1), ease=1-Math.pow(1-pr,4);
-    angle = sa + total*ease;
-    drawWheel(angle);
-    if(pr < 1) requestAnimationFrame(anim);
-    else {
-      spinning = false;
-      const sl=(2*Math.PI)/8;
-      const norm=((angle%(2*Math.PI))+(2*Math.PI))%(2*Math.PI);
+function doSpin(){
+  if(spinning)return;
+  spinning=true;
+  const total=(Math.random()*360+720)*(Math.PI/180),dur=3500,start=performance.now(),sa=angle;
+  (function anim(now){
+    const el=now-start,pr=Math.min(el/dur,1),ease=1-Math.pow(1-pr,4);
+    angle=sa+total*ease;drawWheel(angle);
+    if(pr<1)requestAnimationFrame(anim);
+    else{
+      spinning=false;
+      const sl=(2*Math.PI)/8,norm=((angle%(2*Math.PI))+(2*Math.PI))%(2*Math.PI);
       const idx=Math.floor(8-(norm/sl)%8)%8;
-      const prize = prizes[idx];
-      document.getElementById('coinAmount').textContent = prize + ' 🪙';
-      document.getElementById('spinResult').style.display = 'block';
-      document.getElementById('spinResult').scrollIntoView({behavior:'smooth'});
+      document.getElementById('coinAmount').textContent=prizes[idx]+' 🪙';
+      const r=document.getElementById('spinResult');
+      r.style.display='block';r.scrollIntoView({behavior:'smooth'});
     }
   })(performance.now());
 }
 
-function claimReward() {
-  const txt = document.getElementById('coinAmount').textContent;
-  const num = parseInt(txt);
-  if(!isNaN(num)) {
-    coins += num;
-    document.getElementById('coinCount').textContent = coins;
-  }
-  document.getElementById('spinResult').style.display = 'none';
+function claimReward(){
+  const txt=document.getElementById('coinAmount').textContent;
+  const num=parseInt(txt);
+  if(!isNaN(num)){coins+=num;document.getElementById('coinCount').textContent=coins;}
+  document.getElementById('spinResult').style.display='none';
 }
 
 // INIT
