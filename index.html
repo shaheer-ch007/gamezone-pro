@@ -6,93 +6,110 @@
 <title>GameZone Pro - Play Free Games Online</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #0a0e1a; color: #fff; font-family: Arial, sans-serif; }
+body { background: #0a0e1a; color: #fff; font-family: 'Segoe UI', Arial, sans-serif; }
 
 /* NAVBAR */
-nav { background: #0a0e1a; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #ff6b00; }
-.logo { font-size: 24px; font-weight: bold; color: #ff6b00; }
-.nav-links a { color: #fff; text-decoration: none; margin: 0 15px; font-size: 15px; }
+nav { background: rgba(10,14,26,0.95); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #ff6b00; backdrop-filter: blur(10px); }
+.logo { font-size: 26px; font-weight: 900; color: #ff6b00; letter-spacing: 1px; }
+.nav-links a { color: #fff; text-decoration: none; margin: 0 18px; font-size: 15px; font-weight: 500; transition: color 0.2s; }
 .nav-links a:hover { color: #ff6b00; }
-.coins { color: #ff6b00; font-weight: bold; font-size: 16px; }
+.coins { color: #ff6b00; font-weight: bold; font-size: 16px; background: #1a1f35; padding: 8px 16px; border-radius: 20px; border: 1px solid #ff6b00; }
 
 /* HERO */
-.hero { background: linear-gradient(135deg, #0a0e1a, #1a1f35); padding: 80px 30px; text-align: center; }
-.hero h1 { font-size: 48px; margin-bottom: 20px; }
-.hero h1 span { color: #ff6b00; }
-.hero p { font-size: 18px; color: #aaa; margin-bottom: 30px; }
-.btn { background: #ff6b00; color: #fff; padding: 15px 40px; border: none; border-radius: 30px; font-size: 18px; cursor: pointer; text-decoration: none; display: inline-block; }
-.btn:hover { background: #e55a00; }
+.hero { background: linear-gradient(135deg, #0a0e1a 0%, #1a1f35 50%, #0d1526 100%); padding: 100px 40px; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at center, rgba(255,107,0,0.15) 0%, transparent 70%); }
+.hero h1 { font-size: 56px; font-weight: 900; margin-bottom: 20px; line-height: 1.2; position: relative; }
+.hero h1 span { color: #ff6b00; text-shadow: 0 0 30px rgba(255,107,0,0.5); }
+.hero p { font-size: 20px; color: #aaa; margin-bottom: 40px; position: relative; }
+.hero-btns { display: flex; gap: 15px; justify-content: center; position: relative; }
+.btn { background: linear-gradient(135deg, #ff6b00, #ff8c00); color: #fff; padding: 16px 45px; border: none; border-radius: 30px; font-size: 18px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: 0 5px 25px rgba(255,107,0,0.4); }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 8px 35px rgba(255,107,0,0.6); }
+.btn-outline { background: transparent; border: 2px solid #ff6b00; color: #ff6b00; padding: 14px 35px; border-radius: 30px; font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s; }
+.btn-outline:hover { background: #ff6b00; color: #fff; }
+
+/* STATS */
+.stats { display: flex; justify-content: center; gap: 60px; padding: 30px 40px; background: #0d1120; border-bottom: 1px solid #1a1f35; }
+.stat { text-align: center; }
+.stat-num { font-size: 28px; font-weight: 900; color: #ff6b00; }
+.stat-label { font-size: 13px; color: #888; margin-top: 4px; }
 
 /* AD BANNER */
-.ad-banner { background: #1a1f35; border: 2px dashed #ff6b00; margin: 20px 30px; padding: 20px; text-align: center; color: #aaa; border-radius: 8px; }
+.ad-banner { background: #111827; border: 2px dashed #ff6b00; margin: 20px 40px; padding: 20px; text-align: center; color: #666; border-radius: 8px; font-size: 13px; }
 
 /* CATEGORIES */
-.categories { padding: 30px; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-.cat-btn { background: #1a1f35; color: #fff; padding: 10px 25px; border-radius: 25px; border: 2px solid #ff6b00; cursor: pointer; font-size: 14px; text-decoration: none; }
-.cat-btn:hover { background: #ff6b00; }
+.section-title { font-size: 24px; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.categories { padding: 30px 40px; }
+.cat-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+.cat-btn { background: #1a1f35; color: #fff; padding: 12px 28px; border-radius: 25px; border: 2px solid #2a2f45; cursor: pointer; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+.cat-btn:hover, .cat-btn.active { background: #ff6b00; border-color: #ff6b00; transform: translateY(-2px); }
 
 /* GAMES SECTION */
-.games-section { display: flex; padding: 20px 30px; gap: 20px; }
+.games-section { display: flex; padding: 20px 40px; gap: 25px; }
 .games-main { flex: 1; }
-.games-main h2 { font-size: 28px; margin-bottom: 20px; }
 .games-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.game-card { background: #1a1f35; border-radius: 12px; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
-.game-card:hover { transform: translateY(-5px); }
-.game-card img { width: 100%; height: 160px; object-fit: cover; }
+.game-card { background: #1a1f35; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.3s; border: 2px solid transparent; }
+.game-card:hover { transform: translateY(-8px); border-color: #ff6b00; box-shadow: 0 15px 40px rgba(255,107,0,0.3); }
+.game-thumb { position: relative; overflow: hidden; }
+.game-thumb img { width: 100%; height: 170px; object-fit: cover; transition: transform 0.3s; }
+.game-card:hover .game-thumb img { transform: scale(1.1); }
+.game-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+.game-card:hover .game-overlay { opacity: 1; }
+.play-icon { font-size: 50px; }
 .game-card-info { padding: 15px; }
-.game-card-info .cat-tag { color: #ff6b00; font-size: 12px; font-weight: bold; }
-.game-card-info h3 { font-size: 16px; margin: 5px 0 10px; }
-.play-btn { background: #ff6b00; color: #fff; border: none; padding: 8px 20px; border-radius: 20px; cursor: pointer; width: 100%; font-size: 14px; }
-.play-btn:hover { background: #e55a00; }
+.cat-tag { color: #ff6b00; font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+.game-card-info h3 { font-size: 16px; margin: 6px 0 12px; font-weight: 700; }
+.play-btn { background: linear-gradient(135deg, #ff6b00, #ff8c00); color: #fff; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; width: 100%; font-size: 14px; font-weight: 600; transition: all 0.3s; }
+.play-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,107,0,0.4); }
 
 /* SIDEBAR */
-.sidebar { width: 320px; }
-.ad-space { background: #1a1f35; border: 2px dashed #ff6b00; border-radius: 8px; padding: 20px; text-align: center; color: #aaa; margin-bottom: 20px; height: 280px; display: flex; align-items: center; justify-content: center; flex-direction: column; }
-.ad-space p { font-size: 12px; margin-top: 10px; }
+.sidebar { width: 300px; }
+.ad-space { background: #111827; border: 2px dashed #ff6b00; border-radius: 12px; padding: 20px; text-align: center; color: #555; margin-bottom: 20px; height: 270px; display: flex; align-items: center; justify-content: center; flex-direction: column; font-size: 13px; }
 
 /* GAME PAGE */
-.game-page { display: none; padding: 20px 30px; }
+.game-page { display: none; padding: 20px 40px; }
 .game-layout { display: flex; gap: 20px; align-items: flex-start; }
 .game-frame { flex: 1; }
-.game-frame h2 { margin-bottom: 15px; font-size: 24px; }
-.game-frame iframe { width: 100%; height: 500px; border-radius: 12px; border: 2px solid #ff6b00; }
+.game-frame h2 { margin-bottom: 15px; font-size: 26px; font-weight: 800; }
+.game-frame iframe { width: 100%; height: 520px; border-radius: 16px; border: 3px solid #ff6b00; box-shadow: 0 0 40px rgba(255,107,0,0.3); }
 .game-sidebar { width: 300px; }
 
 /* SPIN PAGE */
-.spin-page { display: none; padding: 40px 30px; text-align: center; }
-.spin-page h1 { font-size: 36px; margin-bottom: 10px; }
+.spin-page { display: none; padding: 40px; text-align: center; }
+.spin-page h1 { font-size: 42px; font-weight: 900; margin-bottom: 10px; }
 .spin-page h1 span { color: #ff6b00; }
 .spin-container { max-width: 500px; margin: 0 auto; }
-canvas#spinWheel { border-radius: 50%; border: 4px solid #ff6b00; margin: 20px 0; }
-.spin-btn { background: #ff6b00; color: #fff; padding: 15px 40px; border: none; border-radius: 30px; font-size: 18px; cursor: pointer; margin: 10px; }
-.spin-result { background: #1a1f35; border-radius: 12px; padding: 30px; margin: 20px 0; display: none; }
-.spin-result h2 { font-size: 28px; margin-bottom: 15px; }
-.coin-circle { background: #ff6b00; width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: bold; margin: 0 auto 15px; }
-.spins-left { color: #ff6b00; font-size: 14px; margin: 10px 0; }
-.disclaimer { color: #666; font-size: 12px; margin-top: 10px; }
+canvas#spinWheel { border-radius: 50%; border: 5px solid #ff6b00; margin: 20px 0; box-shadow: 0 0 40px rgba(255,107,0,0.4); }
+.spin-btn { background: linear-gradient(135deg, #ff6b00, #ff8c00); color: #fff; padding: 16px 45px; border: none; border-radius: 30px; font-size: 18px; font-weight: 700; cursor: pointer; margin: 10px; transition: all 0.3s; box-shadow: 0 5px 25px rgba(255,107,0,0.4); }
+.spin-btn:hover { transform: translateY(-3px); }
+.spin-result { background: #1a1f35; border-radius: 16px; padding: 30px; margin: 20px 0; display: none; border: 2px solid #ff6b00; }
+.spin-result h2 { font-size: 32px; margin-bottom: 15px; }
+.coin-circle { background: linear-gradient(135deg, #ff6b00, #ff8c00); width: 120px; height: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; margin: 0 auto 15px; box-shadow: 0 0 30px rgba(255,107,0,0.5); }
+.spins-left { color: #ff6b00; font-size: 14px; margin: 10px 0; font-weight: 600; }
+.disclaimer { color: #555; font-size: 12px; margin-top: 15px; }
 
 /* DAILY REWARD POPUP */
-.popup-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; }
+.popup-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; }
 .popup-overlay.active { display: flex; }
-.popup { background: #1a1f35; border-radius: 16px; padding: 30px; max-width: 600px; width: 90%; position: relative; border: 2px solid #ff6b00; }
-.popup h2 { font-size: 24px; margin-bottom: 20px; text-align: center; }
+.popup { background: linear-gradient(135deg, #1a1f35, #0d1526); border-radius: 20px; padding: 35px; max-width: 620px; width: 92%; position: relative; border: 2px solid #ff6b00; box-shadow: 0 0 60px rgba(255,107,0,0.3); }
+.popup h2 { font-size: 26px; margin-bottom: 25px; text-align: center; font-weight: 900; }
 .popup h2 span { color: #ff6b00; }
-.close-btn { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
-.reward-days { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
-.day-card { background: #0a0e1a; border-radius: 8px; padding: 12px 8px; text-align: center; min-width: 70px; border: 2px solid #333; }
-.day-card.active { border-color: #ff6b00; background: #ff6b0022; }
-.day-card .day-num { color: #aaa; font-size: 11px; }
-.day-card .day-reward { color: #ff6b00; font-weight: bold; font-size: 14px; margin: 5px 0; }
-.day-card .day-coins { font-size: 11px; color: #aaa; }
-.popup-ad { background: #0a0e1a; border: 2px dashed #ff6b00; padding: 20px; text-align: center; color: #aaa; border-radius: 8px; margin: 15px 0; }
+.close-btn { position: absolute; top: 15px; right: 15px; background: #1a1f35; border: 1px solid #333; color: #fff; width: 32px; height: 32px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.reward-days { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+.day-card { background: #0a0e1a; border-radius: 12px; padding: 14px 10px; text-align: center; min-width: 72px; border: 2px solid #2a2f45; transition: all 0.3s; }
+.day-card.active { border-color: #ff6b00; background: rgba(255,107,0,0.1); box-shadow: 0 0 15px rgba(255,107,0,0.3); }
+.day-card .day-num { color: #888; font-size: 11px; font-weight: 600; }
+.day-card .day-reward { font-size: 22px; margin: 6px 0; }
+.day-card .day-coins { color: #ff6b00; font-weight: 700; font-size: 13px; }
+.popup-ad { background: #0a0e1a; border: 2px dashed #ff6b00; padding: 20px; text-align: center; color: #555; border-radius: 10px; margin: 15px 0; font-size: 13px; }
 
 /* FOOTER */
-footer { background: #060810; padding: 40px 30px; margin-top: 40px; }
-.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 30px; }
-.footer-col h3 { color: #ff6b00; margin-bottom: 15px; }
-.footer-col a { color: #aaa; text-decoration: none; display: block; margin-bottom: 8px; }
+footer { background: #060810; padding: 50px 40px 30px; margin-top: 60px; border-top: 2px solid #1a1f35; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-col h3 { color: #ff6b00; margin-bottom: 18px; font-size: 18px; font-weight: 800; }
+.footer-col p { color: #666; font-size: 14px; line-height: 1.7; }
+.footer-col a { color: #888; text-decoration: none; display: block; margin-bottom: 10px; font-size: 14px; transition: color 0.2s; }
 .footer-col a:hover { color: #ff6b00; }
-.footer-bottom { text-align: center; color: #666; border-top: 1px solid #1a1f35; padding-top: 20px; }
+.footer-bottom { text-align: center; color: #444; border-top: 1px solid #1a1f35; padding-top: 25px; font-size: 13px; }
 
 @media(max-width:768px) {
   .games-section { flex-direction: column; }
@@ -101,7 +118,10 @@ footer { background: #060810; padding: 40px 30px; margin-top: 40px; }
   .game-layout { flex-direction: column; }
   .game-sidebar { width: 100%; }
   .footer-grid { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 28px; }
+  .hero h1 { font-size: 32px; }
+  .stats { gap: 30px; flex-wrap: wrap; }
+  nav { padding: 12px 20px; }
+  .games-section { padding: 20px; }
 }
 </style>
 </head>
@@ -113,44 +133,17 @@ footer { background: #060810; padding: 40px 30px; margin-top: 40px; }
     <button class="close-btn" onclick="document.getElementById('dailyPopup').classList.remove('active')">✕</button>
     <h2>🎁 Daily <span>Login Reward</span></h2>
     <div class="reward-days">
-      <div class="day-card active">
-        <div class="day-num">Day 1</div>
-        <div class="day-reward">🪙</div>
-        <div class="day-coins">10 Coins</div>
-      </div>
-      <div class="day-card">
-        <div class="day-num">Day 2</div>
-        <div class="day-reward">🪙</div>
-        <div class="day-coins">25 Coins</div>
-      </div>
-      <div class="day-card">
-        <div class="day-num">Day 3</div>
-        <div class="day-reward">🪙</div>
-        <div class="day-coins">50 Coins</div>
-      </div>
-      <div class="day-card">
-        <div class="day-num">Day 4</div>
-        <div class="day-reward">🪙</div>
-        <div class="day-coins">75 Coins</div>
-      </div>
-      <div class="day-card">
-        <div class="day-num">Day 5</div>
-        <div class="day-reward">🪙</div>
-        <div class="day-coins">100 Coins</div>
-      </div>
-      <div class="day-card">
-        <div class="day-num">Day 6</div>
-        <div class="day-reward">🪙</div>
-        <div class="day-coins">150 Coins</div>
-      </div>
-      <div class="day-card">
-        <div class="day-num">Day 7</div>
-        <div class="day-reward">🏆</div>
-        <div class="day-coins">500 Coins</div>
-      </div>
+      <div class="day-card active"><div class="day-num">Day 1</div><div class="day-reward">🪙</div><div class="day-coins">10</div></div>
+      <div class="day-card"><div class="day-num">Day 2</div><div class="day-reward">🪙</div><div class="day-coins">25</div></div>
+      <div class="day-card"><div class="day-num">Day 3</div><div class="day-reward">🪙</div><div class="day-coins">50</div></div>
+      <div class="day-card"><div class="day-num">Day 4</div><div class="day-reward">🪙</div><div class="day-coins">75</div></div>
+      <div class="day-card"><div class="day-num">Day 5</div><div class="day-reward">🪙</div><div class="day-coins">100</div></div>
+      <div class="day-card"><div class="day-num">Day 6</div><div class="day-reward">🪙</div><div class="day-coins">150</div></div>
+      <div class="day-card"><div class="day-num">Day 7</div><div class="day-reward">🏆</div><div class="day-coins">500</div></div>
     </div>
     <div class="popup-ad">📢 Ad Space 300x250</div>
-    <button class="btn" style="width:100%" onclick="document.getElementById('dailyPopup').classList.remove('active')">🎁 Watch Ad to Claim Reward</button>
+    <button class="btn" style="width:100%;margin-top:10px" onclick="document.getElementById('dailyPopup').classList.remove('active')">🎁 Watch Ad to Claim Reward</button>
+    <p style="color:#555;font-size:12px;text-align:center;margin-top:10px;">Virtual coins only. No real money involved.</p>
   </div>
 </div>
 
@@ -159,7 +152,7 @@ footer { background: #060810; padding: 40px 30px; margin-top: 40px; }
   <div class="logo">⚡ GameZone Pro</div>
   <div class="nav-links">
     <a href="#" onclick="showPage('home')">Home</a>
-    <a href="#" onclick="showPage('spin')">Spin to Win</a>
+    <a href="#" onclick="showPage('spin')">🎰 Spin to Win</a>
     <a href="#" onclick="showPage('games')">Games</a>
     <a href="#">About</a>
   </div>
@@ -168,36 +161,46 @@ footer { background: #060810; padding: 40px 30px; margin-top: 40px; }
 
 <!-- HOME PAGE -->
 <div id="homePage">
-  <!-- HERO -->
   <div class="hero">
     <h1>Play Free Games,<br><span>No Download Needed</span></h1>
-    <p>1000+ Free Games — Play Instantly in Your Browser!</p>
-    <a href="#" class="btn" onclick="showPage('games')">🎮 Play Now</a>
+    <p>1000+ Free Browser Games — Play Instantly!</p>
+    <div class="hero-btns">
+      <a href="#" class="btn" onclick="showPage('games')">🎮 Play Now</a>
+      <a href="#" class="btn-outline" onclick="showPage('spin')">🎰 Spin & Win</a>
+    </div>
   </div>
 
-  <!-- AD BANNER -->
+  <div class="stats">
+    <div class="stat"><div class="stat-num">1000+</div><div class="stat-label">Free Games</div></div>
+    <div class="stat"><div class="stat-num">50K+</div><div class="stat-label">Players</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Categories</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Free Forever</div></div>
+  </div>
+
   <div class="ad-banner">📢 Advertisement Banner 728x90</div>
 
-  <!-- CATEGORIES -->
   <div class="categories">
-    <a href="#" class="cat-btn">🔫 Action</a>
-    <a href="#" class="cat-btn">🏎️ Racing</a>
-    <a href="#" class="cat-btn">🧩 Puzzle</a>
-    <a href="#" class="cat-btn">⚽ Sports</a>
-    <a href="#" class="cat-btn">🗺️ Adventure</a>
+    <div class="section-title">🎯 Game Categories</div>
+    <div class="cat-grid">
+      <a href="#" class="cat-btn active">🔫 Action</a>
+      <a href="#" class="cat-btn">🏎️ Racing</a>
+      <a href="#" class="cat-btn">🧩 Puzzle</a>
+      <a href="#" class="cat-btn">⚽ Sports</a>
+      <a href="#" class="cat-btn">🗺️ Adventure</a>
+    </div>
   </div>
 
-  <!-- GAMES + SIDEBAR -->
   <div class="games-section">
     <div class="games-main">
-      <h2>🔥 Featured Games</h2>
+      <div class="section-title">🔥 Featured Games</div>
       <div class="games-grid" id="gamesGrid"></div>
-      <div class="ad-banner" style="margin: 20px 0;">📢 Advertisement Banner 728x90</div>
+      <div class="ad-banner" style="margin:20px 0;">📢 Advertisement Banner 728x90</div>
     </div>
     <div class="sidebar">
-      <div class="ad-space">📢<br><p>Ad Space<br>300x250</p></div>
-      <div class="ad-space">📢<br><p>Ad Space<br>300x250</p></div>
-      <div class="ad-space">📢<br><p>Ad Space<br>300x250</p></div>
+      <div style="font-weight:700;margin-bottom:15px;color:#ff6b00;">📢 Sponsored</div>
+      <div class="ad-space">📢<br><br>Ad Space<br>300x250</div>
+      <div class="ad-space">📢<br><br>Ad Space<br>300x250</div>
+      <div class="ad-space">📢<br><br>Ad Space<br>300x250</div>
     </div>
   </div>
 </div>
@@ -207,19 +210,19 @@ footer { background: #060810; padding: 40px 30px; margin-top: 40px; }
   <div class="ad-banner">📢 Advertisement Banner 728x90</div>
   <div class="game-layout">
     <div class="game-sidebar">
-      <div class="ad-space">📢<br><p>Ad Space<br>300x250</p></div>
-      <div class="ad-space">📢<br><p>Ad Space<br>300x250</p></div>
+      <div class="ad-space">📢<br><br>Ad Space<br>300x250</div>
+      <div class="ad-space">📢<br><br>Ad Space<br>300x250</div>
     </div>
     <div class="game-frame">
-      <h2 id="gameTitle">🎮 Moto X3M</h2>
+      <h2 id="gameTitle">🎮 Loading Game...</h2>
       <iframe id="gameIframe" src="" allowfullscreen></iframe>
       <div class="ad-banner" style="margin-top:15px;">📢 Advertisement Banner 728x90</div>
-      <h3 style="margin:20px 0 15px;">Related Games</h3>
+      <div class="section-title" style="margin-top:25px;">🎮 Related Games</div>
       <div class="games-grid" id="relatedGames"></div>
     </div>
     <div class="game-sidebar">
-      <div class="ad-space">📢<br><p>Ad Space<br>300x250</p></div>
-      <div class="ad-space">📢<br><p>Ad Space<br>300x250</p></div>
+      <div class="ad-space">📢<br><br>Ad Space<br>300x250</div>
+      <div class="ad-space">📢<br><br>Ad Space<br>300x250</div>
     </div>
   </div>
 </div>
@@ -227,19 +230,20 @@ footer { background: #060810; padding: 40px 30px; margin-top: 40px; }
 <!-- SPIN PAGE -->
 <div id="spinPage" class="spin-page">
   <h1>🎰 <span>Spin to Win!</span></h1>
-  <p style="color:#aaa; margin-bottom:20px;">Watch an ad and spin for virtual coins!</p>
+  <p style="color:#888;margin-bottom:25px;font-size:16px;">Watch an ad and spin for virtual coins!</p>
   <div class="spin-container">
-    <div class="ad-space" style="margin:0 auto 20px; max-width:300px;">📢<br><p>Watch Ad to Unlock Spin<br>300x250</p></div>
+    <div class="ad-space" style="margin:0 auto 25px;max-width:320px;height:auto;padding:25px;">
+      📢<br><br><strong>Watch Ad to Unlock Spin</strong><br><span style="font-size:12px;">Ad Space 300x250</span>
+    </div>
     <canvas id="spinWheel" width="300" height="300"></canvas>
-    <br>
     <div class="spins-left">🎯 3 Free Spins Remaining Today</div>
-    <button class="spin-btn" onclick="spinWheel()">🎰 Watch Ad to Spin</button>
+    <button class="spin-btn" onclick="doSpin()">🎰 Watch Ad to Spin</button>
     <div class="spin-result" id="spinResult">
       <h2>🎉 YOU WON!</h2>
-      <div class="coin-circle" id="coinAmount">50</div>
-      <p style="font-size:18px; margin:10px 0;">Virtual Coins!</p>
+      <div class="coin-circle" id="coinAmount">50 🪙</div>
+      <p style="font-size:18px;margin:15px 0;color:#aaa;">Virtual Coins Added!</p>
       <button class="spin-btn" onclick="document.getElementById('spinResult').style.display='none'">✅ Claim Reward</button>
-      <div class="ad-space" style="margin:15px auto; max-width:300px;">📢<br><p>Ad Space 300x250</p></div>
+      <div class="ad-space" style="margin:20px auto;max-width:320px;height:auto;padding:25px;">📢<br><br>Ad Space 300x250</div>
       <div class="disclaimer">⚠️ All rewards are virtual coins for fun only. No real money involved.</div>
     </div>
   </div>
@@ -247,50 +251,55 @@ footer { background: #060810; padding: 40px 30px; margin-top: 40px; }
 
 <!-- FOOTER -->
 <footer>
+  <div class="ad-banner" style="margin:0 0 30px;">📢 Advertisement Banner 728x90</div>
   <div class="footer-grid">
     <div class="footer-col">
       <h3>⚡ GameZone Pro</h3>
-      <p style="color:#aaa; font-size:14px;">Your ultimate destination for free online games. Play instantly, no download needed!</p>
+      <p>Your ultimate destination for free online games. Play 1000+ games instantly in your browser. No download needed!</p>
     </div>
     <div class="footer-col">
       <h3>Quick Links</h3>
-      <a href="#">Home</a>
-      <a href="#">Games</a>
-      <a href="#">Spin to Win</a>
-      <a href="#">About</a>
-      <a href="#">Privacy Policy</a>
+      <a href="#">🏠 Home</a>
+      <a href="#">🎮 Games</a>
+      <a href="#">🎰 Spin to Win</a>
+      <a href="#">ℹ️ About</a>
+      <a href="#">🔒 Privacy Policy</a>
     </div>
     <div class="footer-col">
       <h3>Contact</h3>
-      <a href="#">support@gamezonepro.com</a>
+      <a href="#">📧 support@gamezonepro.com</a>
+      <a href="#">💬 Discord</a>
+      <a href="#">🐦 Twitter</a>
     </div>
   </div>
-  <div class="ad-banner">📢 Advertisement Banner 728x90</div>
-  <div class="footer-bottom">© 2026 GameZone Pro. All rights reserved.</div>
+  <div class="footer-bottom">© 2026 GameZone Pro. All rights reserved. | Made with ❤️ for Gamers</div>
 </footer>
 
 <script>
-// GAMES DATA
 const games = [
   { title: "Moto X3M", cat: "RACING", img: "https://img.gamedistribution.com/5b0abd4c0faa4f5eb190a9a16d5a1b4c-512x512.jpeg", url: "https://html5.gamedistribution.com/5b0abd4c0faa4f5eb190a9a16d5a1b4c/?gd_sdk_referrer_url=https://shaheer-ch007.github.io/gamezone-pro/" },
   { title: "Neon Rider", cat: "RACING", img: "https://img.gamedistribution.com/b70681ed5c0749e3bc79d3afb72b2907-512x512.jpeg", url: "https://html5.gamedistribution.com/b70681ed5c0749e3bc79d3afb72b2907/?gd_sdk_referrer_url=https://shaheer-ch007.github.io/gamezone-pro/" },
   { title: "Stack Ball", cat: "ACTION", img: "https://img.gamedistribution.com/9b2dd04813c74d3eba97ed601f0a7a2c-512x512.jpeg", url: "https://html5.gamedistribution.com/9b2dd04813c74d3eba97ed601f0a7a2c/?gd_sdk_referrer_url=https://shaheer-ch007.github.io/gamezone-pro/" },
   { title: "Knife Hit", cat: "ACTION", img: "https://img.gamedistribution.com/4dbe5b1b01954f3682e0440966b09b52-512x512.jpeg", url: "https://html5.gamedistribution.com/4dbe5b1b01954f3682e0440966b09b52/?gd_sdk_referrer_url=https://shaheer-ch007.github.io/gamezone-pro/" },
   { title: "Stickman Hook", cat: "ACTION", img: "https://img.gamedistribution.com/6728a2e13c2147d79e1930f0b9b8c261-512x512.jpeg", url: "https://html5.gamedistribution.com/6728a2e13c2147d79e1930f0b9b8c261/?gd_sdk_referrer_url=https://shaheer-ch007.github.io/gamezone-pro/" },
-  { title: "Road Rush Cars", cat: "RACING", img: "https://img.gamedistribution.com/06ca1636c9e240f7a0f48b5d4d9d8993-512x512.jpeg", url: "https://html5.gamedistribution.com/06ca1636c9e240f7a0f48b5d4d9d8993/?gd_sdk_referrer_url=https://shaheer-ch007.github.io/gamezone-pro/" },
-  { title: "Tunnel Rush", cat: "ACTION", img: "https://img.gamedistribution.com/rvvASMiM-512x512.jpeg", url: "https://html5.gamedistribution.com/rvvASMiM/?gd_sdk_referrer_url=https://shaheer-ch007.github.io/gamezone-pro/" },
-  { title: "2048 Puzzle", cat: "PUZZLE", img: "https://play2048.co/meta/og-image.png", url: "https://play2048.co/" },
-  { title: "Drift Boss", cat: "RACING", img: "https://drifted.in/game/drift-boss/thumbnail.jpg", url: "https://drifted.in/game/drift-boss/" },
+  { title: "Road Rush", cat: "RACING", img: "https://img.gamedistribution.com/06ca1636c9e240f7a0f48b5d4d9d8993-512x512.jpeg", url: "https://html5.gamedistribution.com/06ca1636c9e240f7a0f48b5d4d9d8993/?gd_sdk_referrer_url=https://shaheer-ch007.github.io/gamezone-pro/" },
   { title: "Penalty Shooters", cat: "SPORTS", img: "https://img.gamedistribution.com/rvvASMiM-512x512.jpeg", url: "https://html5.gamedistribution.com/rvvASMiM/?gd_sdk_referrer_url=https://shaheer-ch007.github.io/gamezone-pro/" },
+  { title: "2048 Puzzle", cat: "PUZZLE", img: "https://img.gamedistribution.com/9b2dd04813c74d3eba97ed601f0a7a2c-512x512.jpeg", url: "https://play2048.co/" },
+  { title: "Drift Boss", cat: "RACING", img: "https://img.gamedistribution.com/5b0abd4c0faa4f5eb190a9a16d5a1b4c-512x512.jpeg", url: "https://html5.gamedistribution.com/5b0abd4c0faa4f5eb190a9a16d5a1b4c/?gd_sdk_referrer_url=https://shaheer-ch007.github.io/gamezone-pro/" },
   { title: "Neon Strike", cat: "ACTION", img: "https://img.gamedistribution.com/b70681ed5c0749e3bc79d3afb72b2907-512x512.jpeg", url: "https://html5.gamedistribution.com/b70681ed5c0749e3bc79d3afb72b2907/?gd_sdk_referrer_url=https://shaheer-ch007.github.io/gamezone-pro/" },
-  { title: "Speed Racer", cat: "RACING", img: "https://img.gamedistribution.com/5b0abd4c0faa4f5eb190a9a16d5a1b4c-512x512.jpeg", url: "https://html5.gamedistribution.com/5b0abd4c0faa4f5eb190a9a16d5a1b4c/?gd_sdk_referrer_url=https://shaheer-ch007.github.io/gamezone-pro/" }
+  { title: "Speed Racer", cat: "RACING", img: "https://img.gamedistribution.com/06ca1636c9e240f7a0f48b5d4d9d8993-512x512.jpeg", url: "https://html5.gamedistribution.com/06ca1636c9e240f7a0f48b5d4d9d8993/?gd_sdk_referrer_url=https://shaheer-ch007.github.io/gamezone-pro/" },
+  { title: "Knife Master", cat: "ACTION", img: "https://img.gamedistribution.com/4dbe5b1b01954f3682e0440966b09b52-512x512.jpeg", url: "https://html5.gamedistribution.com/4dbe5b1b01954f3682e0440966b09b52/?gd_sdk_referrer_url=https://shaheer-ch007.github.io/gamezone-pro/" }
 ];
 
-function loadGames() {
-  const grid = document.getElementById('gamesGrid');
+function loadGames(containerId='gamesGrid') {
+  const grid = document.getElementById(containerId);
+  if(!grid) return;
   grid.innerHTML = games.map((g,i) => `
     <div class="game-card" onclick="playGame(${i})">
-      <img src="${g.img}" alt="${g.title}" onerror="this.src='https://via.placeholder.com/300x160/1a1f35/ff6b00?text=${g.title}'">
+      <div class="game-thumb">
+        <img src="${g.img}" alt="${g.title}" onerror="this.src='https://via.placeholder.com/300x170/1a1f35/ff6b00?text=${encodeURIComponent(g.title)}'">
+        <div class="game-overlay"><span class="play-icon">▶️</span></div>
+      </div>
       <div class="game-card-info">
         <div class="cat-tag">${g.cat}</div>
         <h3>${g.title}</h3>
@@ -304,10 +313,13 @@ function playGame(index) {
   document.getElementById('gameTitle').textContent = '🎮 ' + game.title;
   document.getElementById('gameIframe').src = game.url;
   const related = document.getElementById('relatedGames');
-  const others = games.filter((_,i) => i !== index).slice(0,4);
-  related.innerHTML = others.map((g,i) => `
+  const others = games.filter((_,i) => i !== index).slice(0,3);
+  related.innerHTML = others.map((g) => `
     <div class="game-card" onclick="playGame(${games.indexOf(g)})">
-      <img src="${g.img}" alt="${g.title}" onerror="this.src='https://via.placeholder.com/300x160/1a1f35/ff6b00?text=${g.title}'">
+      <div class="game-thumb">
+        <img src="${g.img}" alt="${g.title}" onerror="this.src='https://via.placeholder.com/300x170/1a1f35/ff6b00?text=${encodeURIComponent(g.title)}'">
+        <div class="game-overlay"><span class="play-icon">▶️</span></div>
+      </div>
       <div class="game-card-info">
         <div class="cat-tag">${g.cat}</div>
         <h3>${g.title}</h3>
@@ -318,86 +330,71 @@ function playGame(index) {
 }
 
 function showPage(page) {
-  document.getElementById('homePage').style.display = page === 'home' ? 'block' : 'none';
-  document.getElementById('gamePage').style.display = page === 'game' ? 'block' : 'none';
-  document.getElementById('spinPage').style.display = page === 'spin' ? 'block' : 'none';
-  if(page === 'games') { document.getElementById('homePage').style.display = 'block'; document.getElementById('gamesGrid').scrollIntoView({behavior:'smooth'}); }
-  if(page === 'spin') drawWheel();
+  document.getElementById('homePage').style.display = page==='home'||page==='games' ? 'block' : 'none';
+  document.getElementById('gamePage').style.display = page==='game' ? 'block' : 'none';
+  document.getElementById('spinPage').style.display = page==='spin' ? 'block' : 'none';
+  if(page==='games') setTimeout(()=>document.getElementById('gamesGrid').scrollIntoView({behavior:'smooth'}),100);
+  if(page==='spin') drawWheel();
   window.scrollTo(0,0);
 }
 
 // SPIN WHEEL
-const prizes = ['10 Coins','25 Coins','50 Coins','100 Coins','200 Coins','500 Coins','1000 🏆','Try Again'];
-const colors = ['#ff6b00','#1a1f35','#ff6b00','#1a1f35','#ff6b00','#1a1f35','#ffd700','#1a1f35'];
-let spinning = false;
-let currentAngle = 0;
+const prizes=['10','25','50','100','200','500','1000🏆','Try Again'];
+const colors=['#ff6b00','#1a1f35','#e55a00','#242a45','#ff8c00','#0d1526','#ffd700','#2a1f35'];
+let spinning=false, currentAngle=0;
 
-function drawWheel(angle = 0) {
-  const canvas = document.getElementById('spinWheel');
+function drawWheel(angle=0){
+  const canvas=document.getElementById('spinWheel');
   if(!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const cx = 150, cy = 150, r = 140;
-  const slice = (2 * Math.PI) / prizes.length;
+  const ctx=canvas.getContext('2d');
+  const cx=150,cy=150,r=138,slice=(2*Math.PI)/prizes.length;
   ctx.clearRect(0,0,300,300);
-  prizes.forEach((p,i) => {
-    const start = angle + i * slice;
-    ctx.beginPath();
-    ctx.moveTo(cx,cy);
+  prizes.forEach((p,i)=>{
+    const start=angle+i*slice;
+    ctx.beginPath(); ctx.moveTo(cx,cy);
     ctx.arc(cx,cy,r,start,start+slice);
-    ctx.fillStyle = colors[i];
-    ctx.fill();
-    ctx.strokeStyle = '#ff6b00';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-    ctx.save();
-    ctx.translate(cx,cy);
-    ctx.rotate(start + slice/2);
-    ctx.textAlign = 'right';
-    ctx.fillStyle = '#fff';
-    ctx.font = 'bold 13px Arial';
-    ctx.fillText(p, r-10, 5);
+    ctx.fillStyle=colors[i]; ctx.fill();
+    ctx.strokeStyle='#ff6b00'; ctx.lineWidth=2; ctx.stroke();
+    ctx.save(); ctx.translate(cx,cy); ctx.rotate(start+slice/2);
+    ctx.textAlign='right'; ctx.fillStyle='#fff';
+    ctx.font='bold 13px Arial'; ctx.fillText(p,r-10,5);
     ctx.restore();
   });
-  ctx.beginPath();
-  ctx.arc(cx,cy,20,0,2*Math.PI);
-  ctx.fillStyle = '#ff6b00';
-  ctx.fill();
+  ctx.beginPath(); ctx.arc(cx,cy,22,0,2*Math.PI);
+  ctx.fillStyle='#ff6b00'; ctx.fill();
+  ctx.fillStyle='#fff'; ctx.font='bold 14px Arial';
+  ctx.textAlign='center'; ctx.fillText('GO',cx,cy+5);
 }
 
-function spinWheel() {
+function doSpin(){
   if(spinning) return;
-  spinning = true;
-  const totalRotation = (Math.random() * 360 + 720) * (Math.PI/180);
-  const duration = 3000;
-  const start = performance.now();
-  const startAngle = currentAngle;
-  function animate(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed/duration, 1);
-    const ease = 1 - Math.pow(1-progress, 3);
-    currentAngle = startAngle + totalRotation * ease;
+  spinning=true;
+  const total=(Math.random()*360+720)*(Math.PI/180);
+  const dur=3500, start=performance.now(), startAngle=currentAngle;
+  function animate(now){
+    const elapsed=now-start, progress=Math.min(elapsed/dur,1);
+    const ease=1-Math.pow(1-progress,4);
+    currentAngle=startAngle+total*ease;
     drawWheel(currentAngle);
-    if(progress < 1) { requestAnimationFrame(animate); }
+    if(progress<1){ requestAnimationFrame(animate); }
     else {
-      spinning = false;
-      const slice = (2 * Math.PI) / prizes.length;
-      const normalized = ((currentAngle % (2*Math.PI)) + (2*Math.PI)) % (2*Math.PI);
-      const index = Math.floor(prizes.length - (normalized / slice) % prizes.length) % prizes.length;
-      showResult(prizes[index]);
+      spinning=false;
+      const slice=(2*Math.PI)/prizes.length;
+      const norm=((currentAngle%(2*Math.PI))+(2*Math.PI))%(2*Math.PI);
+      const idx=Math.floor(prizes.length-(norm/slice)%prizes.length)%prizes.length;
+      showResult(prizes[idx]);
     }
   }
   requestAnimationFrame(animate);
 }
 
-function showResult(prize) {
-  const result = document.getElementById('spinResult');
-  const amount = document.getElementById('coinAmount');
-  result.style.display = 'block';
-  amount.textContent = prize;
+function showResult(prize){
+  const result=document.getElementById('spinResult');
+  document.getElementById('coinAmount').textContent=prize+' 🪙';
+  result.style.display='block';
   result.scrollIntoView({behavior:'smooth'});
 }
 
-// INIT
 loadGames();
 drawWheel();
 </script>
