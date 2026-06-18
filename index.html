@@ -12,18 +12,21 @@ nav{background:rgba(10,14,26,0.97);padding:15px 40px;display:flex;justify-conten
 .nav-links a{color:#fff;text-decoration:none;margin:0 15px;font-size:15px;font-weight:500;transition:color 0.2s}
 .nav-links a:hover{color:#ff6b00}
 .coins{color:#ff6b00;font-weight:bold;background:#1a1f35;padding:8px 16px;border-radius:20px;border:1px solid #ff6b00}
-.hero{background:linear-gradient(135deg,#0a0e1a,#1a1f35,#0d1526);padding:0 0 60px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,107,0,0.15) 0%,transparent 70%);pointer-events:none}
-.hero-banner{width:100%;height:400px;object-fit:cover;display:block}
-.hero-content{padding:40px 40px 0;position:relative}
-.hero h1{font-size:52px;font-weight:900;margin-bottom:18px}
-.hero h1 span{color:#ff6b00;text-shadow:0 0 30px rgba(255,107,0,0.5)}
-.hero p{font-size:18px;color:#aaa;margin-bottom:35px}
+
+/* HERO - text over image */
+.hero{position:relative;height:500px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(10,14,26,0.3) 0%, rgba(10,14,26,0.7) 60%, rgba(10,14,26,1) 100%);z-index:1}
+.hero-content{position:relative;z-index:2;padding:0 40px}
+.hero h1{font-size:56px;font-weight:900;margin-bottom:18px;text-shadow:0 2px 20px rgba(0,0,0,0.8)}
+.hero h1 span{color:#ff6b00;text-shadow:0 0 30px rgba(255,107,0,0.8)}
+.hero p{font-size:18px;color:#ddd;margin-bottom:35px;text-shadow:0 1px 10px rgba(0,0,0,0.8)}
 .hero-btns{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
 .btn{background:linear-gradient(135deg,#ff6b00,#ff8c00);color:#fff;padding:15px 40px;border:none;border-radius:30px;font-size:17px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.3s;box-shadow:0 5px 25px rgba(255,107,0,0.4)}
 .btn:hover{transform:translateY(-3px);box-shadow:0 8px 35px rgba(255,107,0,0.6)}
-.btn-outline{background:transparent;border:2px solid #ff6b00;color:#ff6b00;padding:13px 35px;border-radius:30px;font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.3s}
-.btn-outline:hover{background:#ff6b00;color:#fff}
+.btn-outline{background:transparent;border:2px solid #fff;color:#fff;padding:13px 35px;border-radius:30px;font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.3s}
+.btn-outline:hover{background:#ff6b00;border-color:#ff6b00}
+
 .stats{display:flex;justify-content:center;gap:60px;padding:25px 40px;background:#0d1120;border-bottom:1px solid #1a1f35;flex-wrap:wrap}
 .stat{text-align:center}
 .stat-num{font-size:28px;font-weight:900;color:#ff6b00}
@@ -44,7 +47,7 @@ nav{background:rgba(10,14,26,0.97);padding:15px 40px;display:flex;justify-conten
 .game-card:hover .game-thumb img{transform:scale(1.08)}
 .game-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;font-size:50px}
 .game-card:hover .game-overlay{opacity:1}
-.thumb-fallback{font-size:60px;display:none}
+.thumb-fallback{font-size:60px;width:100%;height:100%;display:none;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1f35,#0d1526)}
 .game-card-info{padding:14px}
 .cat-tag{color:#ff6b00;font-size:11px;font-weight:700;letter-spacing:1px}
 .game-card-info h3{font-size:15px;margin:5px 0 10px;font-weight:700}
@@ -59,7 +62,6 @@ nav{background:rgba(10,14,26,0.97);padding:15px 40px;display:flex;justify-conten
 .game-iframe-wrap{position:relative}
 .game-iframe-wrap iframe{width:100%;height:520px;border-radius:16px;border:3px solid #ff6b00;box-shadow:0 0 40px rgba(255,107,0,0.3);display:block}
 .back-btn{position:absolute;top:12px;left:12px;z-index:10;background:rgba(255,107,0,0.92);color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:700;font-size:13px}
-.back-btn:hover{background:#ff6b00}
 .game-sidebar{width:300px}
 .spin-page{display:none;padding:40px;text-align:center}
 .spin-page h1{font-size:40px;font-weight:900;margin-bottom:10px}
@@ -91,7 +93,7 @@ footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px 
 .footer-col a{color:#888;text-decoration:none;display:block;margin-bottom:9px;font-size:14px;transition:color 0.2s}
 .footer-col a:hover{color:#ff6b00}
 .footer-bottom{text-align:center;color:#444;border-top:1px solid #1a1f35;padding-top:22px;font-size:13px}
-@media(max-width:768px){nav{padding:12px 15px}.hero h1{font-size:30px}.games-section,.game-layout{flex-direction:column}.sidebar,.game-sidebar{width:100%}.games-grid{grid-template-columns:repeat(2,1fr);gap:12px}.footer-grid{grid-template-columns:1fr}.stats{gap:25px}.ad-banner{margin:15px 20px}.categories,.games-section,.game-page,.spin-page{padding:15px 20px}}
+@media(max-width:768px){nav{padding:12px 15px}.hero{height:350px}.hero h1{font-size:32px}.games-section,.game-layout{flex-direction:column}.sidebar,.game-sidebar{width:100%}.games-grid{grid-template-columns:repeat(2,1fr);gap:12px}.footer-grid{grid-template-columns:1fr}.stats{gap:25px}.ad-banner{margin:15px 20px}.categories,.games-section,.game-page,.spin-page{padding:15px 20px}}
 </style>
 </head>
 <body>
@@ -130,8 +132,10 @@ footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px 
 
 <!-- HOME -->
 <div id="homePage">
+  <!-- HERO WITH IMAGE BACKGROUND -->
   <div class="hero">
-    <img class="hero-banner" src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=1400&q=80" alt="Gaming Banner" onerror="this.style.display='none'">
+    <img class="hero-bg" src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=1400&q=80" alt="Gaming">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Play Free Games,<br><span>No Download Needed</span></h1>
       <p>1000+ Free Browser Games — Play Instantly!</p>
@@ -153,7 +157,7 @@ footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px 
 
   <div class="categories">
     <div class="section-title">🎯 Game Categories</div>
-    <div class="cat-grid" id="catGrid">
+    <div class="cat-grid">
       <a href="#" class="cat-btn active" onclick="filterGames('ALL',this)">🎮 All Games</a>
       <a href="#" class="cat-btn" onclick="filterGames('ACTION',this)">🔫 Action</a>
       <a href="#" class="cat-btn" onclick="filterGames('RACING',this)">🏎️ Racing</a>
@@ -167,7 +171,7 @@ footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px 
     <div class="games-main">
       <div class="section-title">🔥 Featured Games</div>
       <div class="games-grid" id="gamesGrid"></div>
-      <p id="noGames" style="display:none;text-align:center;padding:40px;color:#666;font-size:16px">No games in this category yet.</p>
+      <p id="noGames" style="display:none;text-align:center;padding:40px;color:#666">No games in this category yet.</p>
       <div class="ad-banner" style="margin:20px 0">📢 Advertisement Banner 728x90</div>
     </div>
     <div class="sidebar">
@@ -256,35 +260,23 @@ footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px 
 const BASE = 'https://shaheer-ch007.github.io/gamezone-pro/';
 const GD = 'https://html5.gamedistribution.com/';
 
-// YOUR REAL GAME IDs FROM GAMEDISTRIBUTION
+// SIRF EK GAME — TEST KE LIYE
 const games = [
-  { title:'Speed Moto Racing', cat:'RACING', emoji:'🏍️', id:'e4af90c070cf499da371b44232a6aaca' },
-  { title:'Car Race 3D', cat:'RACING', emoji:'🏎️', id:'5d8d11e9919245939a57378a02b8fc8b' },
-  { title:'Stunt Bike', cat:'RACING', emoji:'🚀', id:'90fd8a77182b49adb43b76cf582b9c3e' },
-  { title:'City Rush Driver', cat:'RACING', emoji:'🚗', id:'07393e2820d1486ca209959528869a5f' },
-  { title:'Action Hero', cat:'ACTION', emoji:'🔫', id:'2fb1dc3ebec147eeb9d7875354afcc20' },
-  { title:'Fighter Arena', cat:'ACTION', emoji:'🥊', id:'567ad47ea5d04edaaa29a80cd9f9d1a3' },
-  { title:'Ninja Run', cat:'ACTION', emoji:'🥷', id:'9ffaf2fb134844958788642d2f76c6cd' },
-  { title:'Battle Legends', cat:'ACTION', emoji:'⚔️', id:'c6d324c4729f48ef9a3cd8882bdf078e' },
-  { title:'Brain Puzzle', cat:'PUZZLE', emoji:'🧩', id:'4254dba037de4b798541d2c97eae5016' },
-  { title:'Match Master', cat:'PUZZLE', emoji:'🎯', id:'f3ee6674b4ea4579aeefd54d7bf388f0' },
-  { title:'Soccer Stars', cat:'SPORTS', emoji:'⚽', id:'f6acd919192c441c9aca2d20a18e04c6' },
-  { title:'Basketball Pro', cat:'SPORTS', emoji:'🏀', id:'ad37a85f16e246fabdc818f375a5eb45' },
-  { title:"Adventure Quest", cat:"ADVENTURE", emoji:"🗺️", id:"f85eee6b515c4aecb0ef6c6563d05e39", thumb:"https://img.gamedistribution.com/f85eee6b515c4aecb0ef6c6563d05e39-200x120.jpg" },
-  { title:'Jungle Explorer', cat:'ADVENTURE', emoji:'🌴', id:'4aefd2cd9aba4cae8c1e839dedfccadd' }
+  { 
+    title:'Two RX7 Drifters', 
+    cat:'RACING', 
+    emoji:'🏎️', 
+    id:'f85eee6b515c4aecb0ef6c6563d05e39',
+    thumb:'https://raw.githubusercontent.com/shaheer-ch007/gamezone-pro/main/f85eee6b515c4aecb0ef6c6563d05e39-200x120.jpg'
+  }
 ];
-
-function getThumb(id, thumb) {
-  if(thumb) return thumb;
-  return `https://img.gamedistribution.com/${id}-200x120.jpg`;
-}
 
 function makeCard(g, i) {
   return `<div class="game-card" onclick="playGame(${i})">
     <div class="game-thumb">
-      <img src="${getThumb(g.id, g.thumb)}" alt="${g.title}" loading="lazy"
+      <img src="${g.thumb}" alt="${g.title}" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="thumb-fallback" style="font-size:60px;display:none;width:100%;height:100%;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1f35,#0d1526)">${g.emoji}</div>
+      <div class="thumb-fallback">${g.emoji}</div>
       <div class="game-overlay">▶️</div>
     </div>
     <div class="game-card-info">
@@ -296,20 +288,17 @@ function makeCard(g, i) {
 }
 
 function filterGames(cat, btn) {
-  // Update active button
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
   if(btn) btn.classList.add('active');
-  
   const filtered = cat === 'ALL' ? games : games.filter(g => g.cat === cat);
   const grid = document.getElementById('gamesGrid');
   const noGames = document.getElementById('noGames');
-  
   if(filtered.length === 0) {
     grid.innerHTML = '';
     noGames.style.display = 'block';
   } else {
     noGames.style.display = 'none';
-    grid.innerHTML = filtered.map(g => makeCard(g, games.indexOf(g))).join('');
+    grid.innerHTML = filtered.map((g,i) => makeCard(g, games.indexOf(g))).join('');
   }
 }
 
@@ -385,7 +374,6 @@ function claimReward(){
   document.getElementById('spinResult').style.display='none';
 }
 
-// INIT
 filterGames('ALL');
 drawWheel();
 </script>
