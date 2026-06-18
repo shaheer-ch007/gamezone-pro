@@ -125,10 +125,65 @@ footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px 
     <a href="#" onclick="showPage('home')">Home</a>
     <a href="#" onclick="showPage('spin')">🎰 Spin to Win</a>
     <a href="#" onclick="filterGames('ALL');showPage('home')">Games</a>
-    <a href="#">About</a>
+    <a href="#" onclick="showPage('about')">About</a>
+    <a href="#" onclick="showPage('privacy')">Privacy</a>
   </div>
   <div class="coins">🪙 <span id="coinCount">150</span> Coins</div>
 </nav>
+
+<!-- ABOUT PAGE -->
+<div id="aboutPage" style="display:none;padding:60px 40px;max-width:900px;margin:0 auto">
+  <h1 style="font-size:36px;font-weight:900;margin-bottom:20px">⚡ About <span style="color:#ff6b00">GameZone Pro</span></h1>
+  <p style="color:#aaa;font-size:16px;line-height:1.8;margin-bottom:20px">
+    GameZone Pro is a free online gaming platform where players can enjoy hundreds of browser-based games without any downloads or installations. Our mission is to provide instant, fun, and accessible gaming experiences for everyone.
+  </p>
+  <h2 style="font-size:24px;font-weight:800;margin:30px 0 15px;color:#ff6b00">Our Mission</h2>
+  <p style="color:#aaa;font-size:16px;line-height:1.8;margin-bottom:20px">
+    We believe gaming should be free and accessible to everyone. GameZone Pro offers a wide variety of games across multiple categories including Action, Racing, Puzzle, Sports, and Adventure — all completely free to play.
+  </p>
+  <h2 style="font-size:24px;font-weight:800;margin:30px 0 15px;color:#ff6b00">Contact Us</h2>
+  <p style="color:#aaa;font-size:16px;line-height:1.8">
+    📧 Email: <a href="mailto:support@gamezonepro.buzz" style="color:#ff6b00">support@gamezonepro.buzz</a><br><br>
+    We are always happy to hear from our players. Feel free to reach out for any questions, suggestions, or feedback.
+  </p>
+</div>
+
+<!-- PRIVACY POLICY PAGE -->
+<div id="privacyPage" style="display:none;padding:60px 40px;max-width:900px;margin:0 auto">
+  <h1 style="font-size:36px;font-weight:900;margin-bottom:20px">🔒 Privacy <span style="color:#ff6b00">Policy</span></h1>
+  <p style="color:#888;font-size:14px;margin-bottom:30px">Last updated: June 18, 2026</p>
+
+  <h2 style="font-size:22px;font-weight:800;margin:25px 0 12px;color:#ff6b00">1. Information We Collect</h2>
+  <p style="color:#aaa;font-size:15px;line-height:1.8;margin-bottom:15px">
+    GameZone Pro does not collect any personal information from users. We do not require registration or login to play games on our platform. We may collect anonymous usage data such as page views and game plays to improve our services.
+  </p>
+
+  <h2 style="font-size:22px;font-weight:800;margin:25px 0 12px;color:#ff6b00">2. Cookies</h2>
+  <p style="color:#aaa;font-size:15px;line-height:1.8;margin-bottom:15px">
+    We use cookies to improve your experience on our website. Cookies help us remember your preferences and provide personalized content. Third-party advertisers may also use cookies to serve relevant ads.
+  </p>
+
+  <h2 style="font-size:22px;font-weight:800;margin:25px 0 12px;color:#ff6b00">3. Advertising</h2>
+  <p style="color:#aaa;font-size:15px;line-height:1.8;margin-bottom:15px">
+    GameZone Pro uses Google AdSense to display advertisements. Google may use cookies to serve ads based on your prior visits to our website or other websites. You may opt out of personalized advertising by visiting Google Ad Settings.
+  </p>
+
+  <h2 style="font-size:22px;font-weight:800;margin:25px 0 12px;color:#ff6b00">4. Third Party Games</h2>
+  <p style="color:#aaa;font-size:15px;line-height:1.8;margin-bottom:15px">
+    Games on GameZone Pro are provided by third-party game developers via GameDistribution. These games may have their own privacy policies and terms of service.
+  </p>
+
+  <h2 style="font-size:22px;font-weight:800;margin:25px 0 12px;color:#ff6b00">5. Virtual Coins</h2>
+  <p style="color:#aaa;font-size:15px;line-height:1.8;margin-bottom:15px">
+    GameZone Pro features a virtual coins system for entertainment purposes only. Virtual coins have no real monetary value and cannot be exchanged for real money or prizes.
+  </p>
+
+  <h2 style="font-size:22px;font-weight:800;margin:25px 0 12px;color:#ff6b00">6. Contact Us</h2>
+  <p style="color:#aaa;font-size:15px;line-height:1.8">
+    If you have any questions about this Privacy Policy, please contact us at:
+    <a href="mailto:support@gamezonepro.buzz" style="color:#ff6b00">support@gamezonepro.buzz</a>
+  </p>
+</div>
 
 <!-- HOME -->
 <div id="homePage">
@@ -245,8 +300,8 @@ footer{background:#060810;padding:50px 40px 30px;margin-top:60px;border-top:2px 
       <a href="#" onclick="showPage('home')">🏠 Home</a>
       <a href="#" onclick="filterGames('ALL');showPage('home')">🎮 Games</a>
       <a href="#" onclick="showPage('spin')">🎰 Spin to Win</a>
-      <a href="#">ℹ️ About</a>
-      <a href="#">🔒 Privacy Policy</a>
+      <a href="#" onclick="showPage('about')">ℹ️ About</a>
+      <a href="#" onclick="showPage('privacy')">🔒 Privacy Policy</a>
     </div>
     <div class="footer-col">
       <h3>Contact</h3>
@@ -315,6 +370,8 @@ function showPage(p) {
   document.getElementById('homePage').style.display = p==='home' ? 'block' : 'none';
   document.getElementById('gamePage').style.display = p==='game' ? 'block' : 'none';
   document.getElementById('spinPage').style.display = p==='spin' ? 'block' : 'none';
+  document.getElementById('aboutPage').style.display = p==='about' ? 'block' : 'none';
+  document.getElementById('privacyPage').style.display = p==='privacy' ? 'block' : 'none';
   if(p==='spin') drawWheel();
   window.scrollTo(0,0);
 }
