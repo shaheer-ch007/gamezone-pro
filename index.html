@@ -270,18 +270,19 @@ const games = [
   { title:'Match Master', cat:'PUZZLE', emoji:'🎯', id:'f3ee6674b4ea4579aeefd54d7bf388f0' },
   { title:'Soccer Stars', cat:'SPORTS', emoji:'⚽', id:'f6acd919192c441c9aca2d20a18e04c6' },
   { title:'Basketball Pro', cat:'SPORTS', emoji:'🏀', id:'ad37a85f16e246fabdc818f375a5eb45' },
-  { title:'Adventure Quest', cat:'ADVENTURE', emoji:'🗺️', id:'f85eee6b515c4aecb0ef6c6563d05e39' },
+  { title:"Adventure Quest", cat:"ADVENTURE", emoji:"🗺️", id:"f85eee6b515c4aecb0ef6c6563d05e39", thumb:"https://img.gamedistribution.com/f85eee6b515c4aecb0ef6c6563d05e39-200x120.jpg" },
   { title:'Jungle Explorer', cat:'ADVENTURE', emoji:'🌴', id:'4aefd2cd9aba4cae8c1e839dedfccadd' }
 ];
 
-function getThumb(id) {
-  return `https://img.gamedistribution.com/${id}-512x512.jpeg`;
+function getThumb(id, thumb) {
+  if(thumb) return thumb;
+  return `https://img.gamedistribution.com/${id}-200x120.jpg`;
 }
 
 function makeCard(g, i) {
   return `<div class="game-card" onclick="playGame(${i})">
     <div class="game-thumb">
-      <img src="${getThumb(g.id)}" alt="${g.title}" loading="lazy"
+      <img src="${getThumb(g.id, g.thumb)}" alt="${g.title}" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="thumb-fallback" style="font-size:60px;display:none;width:100%;height:100%;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1f35,#0d1526)">${g.emoji}</div>
       <div class="game-overlay">▶️</div>
